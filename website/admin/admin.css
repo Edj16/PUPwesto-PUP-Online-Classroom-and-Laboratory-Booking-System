@@ -1,0 +1,1536 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+body {
+    min-height: 100vh;
+    background: #f5f5f5;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+
+.dashboard-container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+   
+}
+form {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+}
+input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid ;
+}
+select {
+    width: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+input[type="submit"] {
+    width: 100px;
+    padding: 10px;
+    background-color: #800000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Navbar Styles */
+.navbar {
+    background-color: #800000;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    flex-wrap: wrap;
+    gap: 1rem;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    z-index: 100;
+}
+
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(18px, 4vw, 30px);
+}
+
+
+.logo-text .subtitle {
+    font-size: clamp(14px, 3vw, 20px);
+    opacity: 0.9;
+}
+
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+
+.nav-links a:hover,
+.nav-links a.active {
+    text-decoration: underline;
+}
+
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    width: 250px;
+    height: calc(100vh - 80px);
+    background-color: #800000;
+    color: white;
+    padding: 2rem 1rem;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+
+.sidebar h2 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+
+.menu-item img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+}
+
+
+.menu-item:hover,
+.menu-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Main Content Styles */
+.main-content {
+    margin-left: 250px;
+    padding: 100px 40px 2rem 40px;
+    width: calc(100% - 250px);
+    overflow-x: auto;
+    background: #f5f5f5;
+}
+
+/* Container for aligned content */
+.content-wrapper {
+    padding-left: 40px; /* Add padding to push content right */
+}
+
+.main-content h1 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    padding: 0;
+}
+
+
+/* Table Styles */
+.reservation-table {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    margin: 0;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+    font-size: clamp(14px, 2vw, 16px);
+}
+
+
+th {
+    background-color: #800000;
+    color: white;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+
+td {
+    color: #666;
+    background-color: white;
+}
+
+
+tbody tr:hover td {
+    background-color: #f8f8f8;
+}
+
+
+/* Status Styles */
+td:nth-child(9) {
+    font-weight: 600;
+}
+
+
+td:nth-child(9):not(.status-approved):not(.status-rejected) {
+    color: #f0ad4e;
+}
+
+
+.status-approved {
+    color: #28a745;
+}
+
+
+.status-rejected {
+    color: #dc3545;
+}
+
+
+/* Action Buttons Styles */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+
+.action-buttons button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+
+.action-buttons .btn-edit {
+    background-color: #0d6efd;
+    color: white;
+}
+
+
+.action-buttons .btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+
+.action-buttons button:hover {
+    opacity: 0.9;
+}
+
+
+/* Table Controls Styling */
+.table-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 200px;
+    max-width: 500px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.filter-box {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-box select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    min-width: 150px;
+    background-color: white;
+}
+
+.btn-filter {
+    padding: 0.75rem 1.5rem;
+    background-color: #800000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-filter:hover {
+    background-color: #660000;
+}
+
+/* Responsive table container */
+@media (max-width: 1200px) {
+    .reservation-table {
+        margin: 0 -1rem;
+        border-radius: 0;
+    }
+}
+
+
+/* Common Management Header Styles */
+.room-header,
+.users-header,
+.reservations-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1.5rem 2rem;
+    background-color: white;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.room-header h1,
+.users-header h1,
+.reservations-header h1 {
+    margin: 0;
+    color: #333;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.btn-add-room,
+.btn-add-user,
+.btn-add-reservation {
+    padding: 0.75rem 1.5rem;
+    background-color: #800000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add-room:hover,
+.btn-add-user:hover,
+.btn-add-reservation:hover {
+    background-color: #660000;
+}
+
+/* Room Management Styles */
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+
+.room-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 0;
+}
+
+
+.room-card .room-header {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.room-card h3 {
+    color: #333;
+    font-size: 1.25rem;
+}
+
+
+.room-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+
+.room-status.available {
+    background-color: #e8f5e9;
+    color: #28a745;
+}
+
+
+.room-status.occupied {
+    background-color: #fff3cd;
+    color: #ffc107;
+}
+
+
+.room-status.maintenance {
+    background-color: #f8d7da;
+    color: #dc3545;
+}
+
+
+.room-details {
+    margin-bottom: 1.5rem;
+}
+
+
+.room-details p {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+
+.room-schedule {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.room-schedule h4 {
+    color: #333;
+    margin-bottom: 0.75rem;
+}
+
+
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+
+.schedule-item span {
+    color: #666;
+}
+
+
+.schedule-item .booked {
+    color: #dc3545;
+}
+
+
+.schedule-item .available {
+    color: #28a745;
+}
+
+
+.room-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+
+.btn-edit, .btn-maintenance, .btn-delete {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    flex: 1;
+    transition: all 0.2s;
+}
+
+
+.btn-edit {
+    background-color: #800000;
+    color: white;
+}
+
+
+.btn-maintenance {
+    background-color: #ffc107;
+    color: #000;
+}
+
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.modal.show {
+    display: flex !important;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    margin: 40px auto;
+    position: relative;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.modal-form {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Override any custom modal-specific header styles */
+#addUserModal .modal-header,
+#addRoomModal .modal-header,
+#addReservationModal .modal-header {
+    padding: 0.75rem 1rem;
+    height: 56px;
+    background-color: #f8f9fa;
+}
+
+#addUserModal .modal-header h2,
+#addRoomModal .modal-header h2,
+#addReservationModal .modal-header h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: #fff;
+    height: 38px;
+    line-height: 1.5;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+    background: white;
+    margin: 1rem -1rem -1rem -1rem;
+}
+
+/* Remove any custom modal-specific styles */
+#addUserModal .modal-content,
+#addUserModal .modal-header,
+#addUserModal .form-group,
+#addUserModal .form-actions {
+    padding: inherit;
+    margin: inherit;
+    border-radius: inherit;
+}
+
+@media (max-width: 576px) {
+    .modal {
+        padding: 0.5rem;
+    }
+
+    .modal-content {
+        margin: 0.5rem;
+        max-height: calc(100vh - 1rem);
+}
+
+.form-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+}
+
+.btn-save,
+.btn-cancel {
+        width: 100%;
+        min-width: 100%;
+    }
+}
+
+/* Form row for time inputs */
+.form-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+@media (max-width: 576px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .particular-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .quantity-input {
+        width: 100% !important;
+    }
+}
+
+/* Particulars section */
+.particulars-container {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 0.75rem;
+    background-color: #f8f9fa;
+}
+
+.particular-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.particular-item:last-child {
+    border-bottom: none;
+}
+
+.particular-item label {
+    display: flex;
+    align-items: center;
+        gap: 0.5rem;
+    margin: 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    flex: 1;
+}
+
+.particular-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #800000;
+}
+
+.quantity-input {
+    width: 70px !important;
+    padding: 0.375rem 0.5rem !important;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.quantity-input:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* User Management Styles */
+.users-table {
+    margin-top: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    width: 100%;
+}
+
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+
+.status-badge.active {
+    background-color: #e8f5e9;
+    color: #28a745;
+}
+
+
+.status-badge.inactive {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+
+.status-badge.suspended {
+    background-color: #f8d7da;
+    color: #dc3545;
+}
+
+
+.btn-suspend {
+    background-color: #ffc107;
+    color: #000;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+
+.btn-suspend:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+
+/* User Form Styles */
+.user-form {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.user-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.user-form .form-group label {
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.user-form .form-group input,
+.user-form .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    transition: all 0.2s ease;
+    background-color: #fff;
+}
+
+.user-form .form-group input[type="file"] {
+    padding: 0.5rem 0;
+    border: none;
+}
+
+.user-form .form-group input:focus,
+.user-form .form-group select:focus {
+    border-color: #800000;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.1);
+}
+
+.user-form .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #dee2e6;
+}
+
+.user-form .btn-save,
+.user-form .btn-cancel {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    min-width: 100px;
+    transition: all 0.2s ease;
+}
+
+.user-form .btn-save {
+    background-color: #800000;
+    color: white;
+}
+
+.user-form .btn-save:hover {
+    background-color: #660000;
+}
+
+.user-form .btn-cancel {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.user-form .btn-cancel:hover {
+    background-color: #dee2e6;
+}
+
+@media (max-width: 576px) {
+    .user-form {
+        padding: 1rem;
+    }
+
+    .user-form .form-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .user-form .btn-save,
+    .user-form .btn-cancel {
+        width: 100%;
+    }
+}
+
+/* Department specific styles */
+td[data-department]::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+
+td[data-department="engineering"]::before {
+    background-color: #007bff;
+}
+
+
+td[data-department="science"]::before {
+    background-color: #28a745;
+}
+
+
+td[data-department="education"]::before {
+    background-color: #ffc107;
+}
+
+
+td[data-department="business"]::before {
+    background-color: #17a2b8;
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+    .content-wrapper {
+        padding-left: 30px; /* Slightly reduced padding for smaller screens */
+    }
+    .main-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        padding: 100px 30px 1rem 30px;
+    }
+    
+    .main-content h1,
+    .table-controls,
+    .reservation-table {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+/* --- Responsive Sidebar and Main Content --- */
+@media screen and (max-width: 900px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 70vw;
+        max-width: 300px;
+        height: 100vh;
+        transform: translateX(-100%);
+        z-index: 2000;
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+        padding-top: 80px;
+    }
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 100px 20px 1rem 20px;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .logo-section, .nav-links {
+        width: 100%;
+        justify-content: center;
+    }
+    .table-controls {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+    .search-box {
+        max-width: 100%;
+    }
+    .filter-box {
+        width: 100%;
+    }
+    .filter-box select,
+    .filter-box input[type="submit"] {
+        flex: 1;
+    }
+    .room-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .action-buttons {
+        flex-direction: column;
+    }
+    .action-buttons button {
+        width: 100%;
+    }
+    .hamburger-menu {
+        display: block !important;
+    }
+    .room-header,
+    .users-header,
+    .reservations-header {
+        margin-bottom: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem 2rem;
+    }
+    .table-controls {
+        margin-bottom: 1.5rem;
+    }
+    .users-table {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 0.5rem;
+    }
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+    .content-wrapper {
+        padding-left: 20px; /* Further reduced padding for mobile */
+    }
+    .main-content {
+        padding: 120px 15px 1rem 15px;
+    }
+    .modal-content {
+        padding: 1rem;
+    }
+    .form-actions {
+        flex-direction: column;
+    }
+    .btn-save,
+    .btn-cancel {
+        width: 100%;
+    }
+    th, td {
+        padding: 0.5rem;
+        font-size: 13px;
+    }
+    .filter-box {
+        flex-direction: column;
+    }
+    .filter-box select,
+    .filter-box input[type="submit"] {
+        width: 100%;
+    }
+    .room-header,
+    .users-header,
+    .reservations-header {
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    .btn-add-room,
+    .btn-add-user,
+    .btn-add-reservation {
+        width: 100%;
+    }
+}
+
+/* --- Table Responsiveness --- */
+.reservation-table,
+.users-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+}
+
+
+table {
+    min-width: 600px;
+    width: 100%;
+}
+
+
+th, td {
+    padding: 0.75rem;
+    font-size: clamp(13px, 2vw, 16px);
+}
+
+
+/* --- Hamburger Menu Button --- */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+/* Enhanced Responsive Design */
+@media screen and (min-width: 2560px) {
+    /* For 4K displays */
+    .main-content {
+        max-width: 2000px;
+        margin: 0 auto;
+        margin-left: 250px;
+    }
+
+    .room-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    .logo-text {
+        font-size: clamp(24px, 3vw, 36px);
+    }
+
+    th, td {
+        font-size: clamp(16px, 1.5vw, 20px);
+        padding: 1rem 1.5rem;
+    }
+}
+
+@media screen and (min-width: 1440px) and (max-width: 2559px) {
+    /* For larger desktop screens */
+    .main-content {
+        max-width: 1600px;
+        margin-left: 250px;
+    }
+
+    .room-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+    /* For smaller desktop screens */
+    .main-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        padding: 2rem;
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .room-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    /* For tablets */
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    .room-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+    }
+
+    .table-controls {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .search-box {
+        min-width: 250px;
+        flex: 2;
+    }
+
+    .filter-box {
+        flex: 1;
+        min-width: 200px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /* For mobile phones */
+    .navbar {
+        padding: 0.75rem;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo-text {
+        font-size: clamp(16px, 4vw, 24px);
+    }
+
+    .logo-text .subtitle {
+        font-size: clamp(12px, 3vw, 16px);
+    }
+
+    .content-wrapper {
+        padding-left: 20px; /* Further reduced padding for mobile */
+    }
+    
+    .main-content {
+        padding: 120px 0 1rem 0;
+    }
+    
+    .main-content h1,
+    .table-controls,
+    .reservation-table {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .room-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .room-card {
+        padding: 1rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 0.75rem;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .btn-accept, 
+    .btn-reject,
+    .btn-edit,
+    .btn-maintenance,
+    .btn-delete {
+        width: 100%;
+        padding: 0.75rem;
+    }
+}
+
+/* Print Media Query */
+@media print {
+    .navbar,
+    .sidebar,
+    .action-buttons,
+    .table-controls {
+        display: none !important;
+    }
+
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    body {
+        background: white;
+    }
+
+    table {
+        page-break-inside: auto;
+    }
+
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+    @page {
+        margin: 2cm;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .navbar,
+    .sidebar {
+        background-color: #000000;
+    }
+
+    .btn-accept {
+        background-color: #006600;
+    }
+
+    .btn-reject {
+        background-color: #990000;
+    }
+
+    .status-badge,
+    .room-status {
+        border: 1px solid currentColor;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Reservation Status Styles */
+.status-cell {
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.status-cell.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-cell.approved {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-cell.rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.action-buttons .btn-accept {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-buttons .btn-reject {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-buttons button:hover {
+    opacity: 0.9;
+}
+/* Add User Modal Specific Styles */
+#addUserModal .modal-content {
+    max-width: 500px;
+    padding: 1rem;
+}
+
+#addUserModal .modal-header {
+    margin: -1rem -1rem 1rem -1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+#addUserModal .modal-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+#addUserModal .form-group {
+    margin-bottom: 0.75rem;
+}
+
+#addUserModal .form-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+#addUserModal .form-group input,
+#addUserModal .form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    height: 32px;
+    background-color: #fff;
+}
+
+#addUserModal .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #dee2e6;
+}
+
+.modal-form {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Adjust form control height and padding */
+.form-control {
+    padding: 0.5rem;
+    height: 32px;
+    font-size: 0.9rem;
+}
+
+/* Adjust file input height */
+input[type="file"].form-control {
+    padding: 0.25rem 0.5rem;
+    height: auto;
+}
+
+/* Make buttons more compact */
+.btn-save,
+.btn-cancel {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    min-width: 80px;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification.success {
+    background-color: #28a745;
+}
+
+.notification.error {
+    background-color: #dc3545;
+}

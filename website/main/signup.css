@@ -1,0 +1,432 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Alice', 'Constantia', serif;
+  }
+  
+  body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    background: 
+      linear-gradient(to right, #5a0000d5, #000000de),
+      url('../images/PUP.png') no-repeat center center / cover;
+    background-attachment: fixed;
+  }
+  
+  /* ===== Left Panel (Background) ===== */
+  .background-picture {
+    flex: 6;
+    min-width: 300px;
+    height: 100vh;
+    background: 
+      linear-gradient(to right, #5a0000d5, #000000de),
+      url('../images/PUP.png') no-repeat center center / cover;
+    background-attachment: fixed;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* ===== Right Panel (Login Form) ===== */
+  .login-panel {
+    flex: 3;
+    min-width: 300px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #fdfdfd;
+  }
+  
+  .login-panel h3 {
+    color: maroon;
+    font-size: 1.8em;
+  }
+  
+  .login-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .login-header img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+  }
+  
+  .login-header h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+  
+  .login-header h6 {
+    color: lightgray;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .form-container {
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-container label {
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  .form-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  button.guest-button,
+  button.sign-in-button {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  button.guest-button {
+    background-color: #ddd;
+    color: #333;
+  }
+  
+  button.sign-in-button {
+    background-color: maroon;
+    color: white;
+  }
+  
+  button.sign-in-button:hover {
+    background-color: #8b0000;
+  }
+  
+  .form-container p {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  
+  .form-container p a {
+    color: maroon;
+    text-decoration: none;
+  }
+  
+  .form-container p a:hover {
+    text-decoration: underline;
+  }
+  .form-container2 {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;  /* align form to top instead of center */
+    padding: 50px 30px;
+    height: 100vh;
+    background-color: white;
+    box-sizing: border-box;
+  }
+  
+  .form-container2 form {
+    width: 100%;
+    max-width: 500px; /* allow more width for your two-column form */
+    padding: 20px;
+    background-color: #fff;
+    box-sizing: border-box;
+  }
+  
+  .form-container2 h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: maroon;
+  }
+  
+  .form-container2 img {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+  
+  .row-div {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .form-group {
+    flex: 1;
+    min-width: 150px; /* make sure small screens still behave */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: rgb(96, 96, 96);
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: maroon;
+    outline: none;
+  }
+  
+  .signbutton {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    background-color: maroon;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background-color 0.3s;
+  }
+  
+  .signbutton:hover {
+    background-color: #a10000;
+  }
+  
+  .back-to-login-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    background-color: #666;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .back-to-login-btn:hover {
+    background-color: #555;
+  }
+  
+  hr {
+    margin-top: 10px;
+    border: 1px solid maroon;
+  }
+  
+  .row-div {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  
+  .form-group {
+    flex: 1;
+    min-width: 125px;
+    display: flex;
+    flex-direction: column;
+      
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+    color: rgb(96, 96, 96);
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 4px;
+    transition: border 0.2s;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: maroon;
+    outline: none;
+  }
+  
+  .id-signup {
+    flex: 7;
+  }
+  
+  .row-div .form-group:not(.id-signup) {
+    flex: 3;
+  }
+  
+  #no-account-signup{
+    cursor: pointer;
+  }
+  
+  .account-container {
+    width: 90%; /* Adjust to make it more responsive */
+    max-width: 600px; /* Max width for larger screens */
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
+    max-height: 90vh; /* Limit height to viewport height */
+  }
+  
+  .account-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Consistent spacing between form groups */
+  }
+  
+  .account-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: maroon;
+  }
+  
+  .account-container img {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+  
+  .account-container .row-div {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 15px;
+    width: 100%;
+    justify-content: space-between; /* Distribute items evenly */
+  }
+  
+  .account-container .form-group {
+    flex: 1;
+    min-width: 180px; /* Ensure inputs don't get too small */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .account-container .form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .account-container .form-group input,
+  .account-container .form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%; /* Ensure inputs take full available width in their column */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  .account-container .form-group input:focus,
+  .account-container .form-group select:focus {
+    border-color: maroon;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(128, 0, 0, 0.2);
+  }
+  
+  .account-container .signbutton {
+    background-color: maroon;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 20px; /* More space before the submit button */
+    width: auto; /* Allow button to size itself */
+    align-self: flex-end; /* Align button to the right */
+    transition: background-color 0.3s ease;
+  }
+  
+  .account-container .signbutton:hover {
+    background-color: #8b0000;
+  }
+  
+  .account-container hr {
+    border: 0.5px solid maroon;
+    margin-top: 5px;
+  }
+  
+  .right-panel {
+    flex: 3;
+    min-width: 300px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #fdfdfd;
+    overflow-y: auto; /* Ensure right panel can scroll */
+  }
+  
+  .password-input-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: maroon; /* Or any color that fits your design */
+  }

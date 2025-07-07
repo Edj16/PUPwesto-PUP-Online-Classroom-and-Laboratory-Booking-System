@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>user</title>
+  <link rel="stylesheet" href="usermain.css">
+</head>
+
+<body>
+
+    <div class="sidebar-container">
+    
+    <div class="sidebar">
+      <img src="../images/puplogo.png" alt="pup-logo" class="pup-logo">
+      <ul>
+        <li><img src="../images/home-icon.png" alt="Home" class="nav-icon nav-target" id="home-icon"></li>
+        <li><img src="../images/new-icon.png" alt="Book" class="nav-icon nav-target" id="book-icon"></li>
+        <li><img src="../images/request-icon.png" alt="Requests" class="nav-icon nav-target" id="request-icon"></li>
+        <li><img src="../images/message-icon.png" alt="Message" class="nav-icon nav-target" id="message-icon"></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-labels">
+      <ul>
+        <li id="home-label" class="nav-target">Home</li>
+        <li id="book-label" class="nav-target">Book</li>
+        <li id="request-label" class="nav-target">Requests</li>
+        <li id="message-label" class="nav-target">Message</li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <div class="main-header">
+
+        <div class="title-header">
+          <h2>PUP Online Laboratory/Classroom Booking System</h2>
+          <p>Your go-to platform for hassle-free campus space reservations</p>
+        </div>
+        
+        <div class="profile-header">
+            <div class="name-header">
+            <p class="name">Juan Dela Cruz</p>
+            <p class="pup-webmail">edmarcellasco@iskolarngbayan.edu.ph</p>
+          </div>
+          <img src="../images/profile-icon.png" alt="profile-pic">
+        </div>
+
+      </div>
+
+
+    <div class="main-container">
+      <div class="guidelines-container">
+        <h1>Welcome Isko!</h1>
+        <h3>Guidelines:</h3>
+        <ol>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
+           
+        </ol>
+      </div>
+
+      <div class="inner-main">
+        <div class="choose-icons" id="new-booking-icon">
+          <!-- <img src="" alt="Booking"> -->
+          <h3>Booking</h3>
+        </div>
+
+        <div class="choose-icons" id="requests-icon" >
+          <!-- <img src="" alt="Requests"> -->
+          <h3>Your Requests</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="new-request-container" id="new-request-container">
+      <div class="title-div1">
+        <h2>New Request</h2>
+        <a href=""><img src="../images/plus-icon.png" alt="new button" id="new-icon"></a>
+      </div>
+      
+      <form action="">
+        <div class="title-div">
+          <h4>Reservation Details</h4>
+          <button class="filter-button">Filter</button>
+        </div>
+        
+        <div class="row-div">
+          <label for="selectdate">Date: </label>
+          <input type="date" name="selectdate" placeholder="select date">
+
+          <label for="starttime">Start Time: </label>
+          <input type="time" name="starttime" placeholder="select time">
+
+          <label for="endtime">End Time: </label>
+          <input type="time" name="endtime" placeholder="select time">
+        </div>
+        
+        <div class="row-div">
+          <label for="building">Building: </label>
+          <select name="building-option" id="building-options">
+            <option value="" disabled selected>select building</option>
+            <option value="main-building">Main</option>
+            <option value="chk-building">CHK</option>
+            <option value="cea-building">CEA</option>
+          </select>
+
+          <label for="room-type">Type: </label>
+          <select name="room-type-option" id="room-type-option">
+            <option value="" disabled selected>select room type</option>
+            <option value="comp-lab">Computer Laboratory</option>
+            <option value="sci-lab">Science Laboratory</option>
+            <option value="lecture-room">Lecture Room</option>
+          </select>
+        </div>
+      </form>
+
+      <div class="room-container">
+
+      </div>
+    </div>
+
+    
+    <div class="request-container" id="request-container">
+      <h2>Your Requests</h2><hr>
+      <table>
+        <thead>
+          <tr>
+            <th>Building</th>
+            <th>Room</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>---</th>
+            <th>---</th>
+            <th>---</th>
+            <th>---</th>
+            <th>---</th>
+            <th>---</th>
+          </tr>
+        </tbody>
+      </table>
+      <button class="button-new">+ new</button>
+    </div>
+
+    <div class="particulars-panel" id="particulars-panel">
+      <h3>Particulars</h3>
+      <label for="particulars">Particulars</label>
+      <select name="particulars" id="particulars">
+        <option value="LT1">LED TV</option>
+        <option value="VG2">VGA/HDMI</option>      
+        <option value="PJ3">Projector</option>
+        <option value="ET4">Extension</option>
+        <option value="OT5">Others</option>
+      </select>
+      <button>Confirm</button>
+    </div>
+
+    <div class="summary-panel" id="summary-panel">
+      <h2>Summary</h2>
+    </div>
+
+    <div class="message-panel" id="message-panel">
+      <h2>Summary</h2>
+    </div>
+
+  </main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
